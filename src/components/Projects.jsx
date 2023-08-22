@@ -6,7 +6,7 @@ function Projects() {
   return (
     <div>
         <h1 id='projects' className='text-5xl ml-4 md:ml-44 mb-24 mt-24 font-thin'>PROJECTS</h1>
-        <div className='grid md:grid-cols-3 gap-y-24 md:gap-x-12 md:ml-44 mx-24 md:mx-44 mb-24'>
+        <div className='grid md:grid-cols-3 gap-y-24 md:gap-x-12 md:ml-44 mx-4 md:mx-44 mb-24'>
             {
             projects?.map((project,key) => (
                 <div key={key} className='border-2 border-purple-950 border-opacity-60 rounded-xl pb-4 hover:scale-105 duration-500'>

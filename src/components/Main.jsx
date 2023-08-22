@@ -16,19 +16,19 @@ function Main() {
   
       <p className='md:text-lg font-thin tracking-widest'>I'm a Frontend Developer based in Antalya, Turkey and also a Management Information Systems student in Antalya Belek University. As a self-taught developer, I love coding ReactJS and Tailwind CSS.</p>
 
-      <div className="flex gap-x-4 md:gap-x-24 mt-24 tracking-wider">
+      <div className="flex gap-x-3 md:gap-x-24 mt-24 tracking-wider">
           <div className="rounded-md bg-gradient-to-r from-purple-950 via-[#6964DE] to-purple-950 p-1 hover:scale-105 duration-500">
-            <a href='https://www.linkedin.com/in/yusuf-kitlik/' target='_blank' rel='noreferrer' className="flex h-[50px] w-[150px] items-center justify-center gap-x-3 bg-black back cursor-pointer">
+            <a href='https://www.linkedin.com/in/yusuf-kitlik/' target='_blank' rel='noreferrer' className="flex h-[50px] w-[100px] md:w-[150px] items-center justify-center gap-x-3 bg-black back cursor-pointer">
               <BsLinkedin size={24}/>Linkedin
             </a>
           </div>
           <div className="rounded-md bg-gradient-to-r from-purple-950 via-[#6964DE] to-purple-950 p-1 hover:scale-105 duration-500">
-            <a href='https://github.com/yusufktlk' target='_blank' rel='noreferrer' className="flex h-[50px] w-[150px] items-center justify-center gap-x-3 bg-black back cursor-pointer">
+            <a href='https://github.com/yusufktlk' target='_blank' rel='noreferrer' className="flex h-[50px] md:h-[50px] w-[100px] md:w-[150px] items-center justify-center gap-x-3 bg-black back cursor-pointer">
               <BsGithub size={24}  />Github
             </a>
           </div>
           <div className="rounded-md bg-gradient-to-r from-purple-950 via-[#6964DE] to-purple-950  p-1 hover:scale-105 duration-500">
-            <a href='https://twitter.com/YKtlk' target='_blank' rel='noreferrer' className="flex h-[50px] w-[150px] items-center justify-center gap-x-3 bg-black back cursor-pointer">
+            <a href='https://twitter.com/YKtlk' target='_blank' rel='noreferrer' className="flex h-[50px] md:h-[50px] w-[100px] md:w-[150px] items-center justify-center gap-x-3 bg-black back cursor-pointer">
               <FiTwitter size={24}/>Twitter
             </a>
           </div>
