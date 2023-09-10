@@ -9,6 +9,14 @@
     },
     {
         "id":2,
+        "title":"News App",
+        "text":"News website I developed using React and Tailwind CSS with the help of The New York Times API.",
+        "live":"https://news-app-yusufktlk.vercel.app/",
+        "source":"https://github.com/yusufktlk/news-app",
+        "image":"/news.png"
+    },
+    {
+        "id":3,
         "title":"Ecommerce App",
         "text":"I used Firebase to set up the Authentication structure, Axios to get the data from the API, and Redux Toolkit for State Management.",
         "live":"https://ecommerce-reactjs-q7vk.vercel.app/",
@@ -16,7 +24,7 @@
         "image":"/ecommerce.png"
     },
     {
-        "id":3,
+        "id":4,
         "title":"Architecture Website",
         "text":"Responsive clone architecture site I made with React and Tailwind CSS.",
         "live":"https://architecture-responsive.netlify.app/",
@@ -24,7 +32,7 @@
         "image":"/architecture.png"
     },
     {
-        "id":4,
+        "id":5,
         "title":"Pokedex App",
         "text":"I used POKEAPI for the api. You can learn many information about pokemon by typing the name of the pokemon you want in the search section",
         "live":"https://searchpoke-reactjs.netlify.app/",
@@ -32,7 +40,7 @@
         "image":"/pokedex.png"
     },
     {
-        "id":5,
+        "id":6,
         "title":"Rick and Morty App",
         "text":"I used POKEAPI for the api. You can learn many information about pokemon by typing the name of the pokemon you want in the search section",
         "live":"https://rick-and-morty-reactapp.netlify.app/",
@@ -40,7 +48,7 @@
         "image":"/rickandmorty.png"
     },
     {
-        "id":6,
+        "id":7,
         "title":"Cafe Website",
         "text":"Clone cafe site that I developed with React and Tailwind CSS.",
         "live":"https://cafe-reactjs.netlify.app/",
@@ -48,7 +56,7 @@
         "image":"/cafe.png"
     },
     {
-        "id":7,
+        "id":8,
         "title":"Money Spending App",
         "text":"In this app, you can buy things from the market by spending Elon Musk's money. You can see your purchases in the receipt section at the bottom.",
         "live":"https://spend-money-elonmusk.netlify.app/",
@@ -56,7 +64,7 @@
         "image":"/money.png"
     },
     {
-        "id":8,
+        "id":9,
         "title":"Covid19 Turkey Data",
         "text":"This application helps us to see the Covid 19 statistics in Turkey. I specified the start and end date. You can see the number of tests, the number of cases and the number of deaths on the desired date.",
         "live":"https://covid19-datas-reactjs.netlify.app/",
@@ -64,11 +72,11 @@
         "image":"/covid.png"
     },
     {
-        "id":9,
+        "id":10,
         "title":"Steakhouse Website",
         "text":"Responsive restaurant website that I developed with React and Tailwind CSS",
-        "live":"https://github.com/yusufktlk/steakhouse-responsive",
-        "source":"https://steakhouse-responsive.netlify.app/",
+        "live":"https://steakhouse-responsive.netlify.app/",
+        "source":"https://github.com/yusufktlk/steakhouse-responsive",
         "image":"/steakhouse.png"
     }
 ]
