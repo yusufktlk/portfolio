@@ -78,5 +78,13 @@
         "live":"https://steakhouse-responsive.netlify.app/",
         "source":"https://github.com/yusufktlk/steakhouse-responsive",
         "image":"/steakhouse.png"
+    },
+    {
+        "id":11,
+        "title":"Camping Website",
+        "text":"Responsive camping website landing page that I developed with React and Tailwind CSS",
+        "live":"https://camping-lac.vercel.app/",
+        "source":"https://github.com/yusufktlk/camping",
+        "image":"/camping.png"
     }
 ]
