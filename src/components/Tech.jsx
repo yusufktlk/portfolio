@@ -9,6 +9,7 @@ function Tech() {
             <img className='hover:-translate-y-5 duration-500 h-[40px] md:h-[70px] w-[40px] md:w-[70px]' src='/CSS.png' />
             <img className='hover:-translate-y-5 duration-500 h-[40px] md:h-[70px] w-[40px] md:w-[70px]' src='/TailwindCSS.png' />
             <img className='hover:-translate-y-5 duration-500 h-[40px] md:h-[70px] w-[40px] md:w-[70px]' src='/Javascript.png' />
+            <img className='hover:-translate-y-5 duration-500 h-[40px] md:h-[70px] w-[40px] md:w-[70px]' src='/typescript0.png' />
             <img className='hover:-translate-y-5 duration-500 h-[40px] md:h-[70px] w-[40px] md:w-[70px]' src='/React.png' />
             <img className='hover:-translate-y-5 duration-500 h-[40px] md:h-[70px] w-[40px] md:w-[70px]' src='/Figma.png' />
             <img className='hover:-translate-y-5 duration-500 h-[40px] md:h-[70px] w-[40px] md:w-[70px]' src='/Github.png' />
