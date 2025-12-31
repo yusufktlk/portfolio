@@ -1,0 +1,136 @@
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: var(--menubar-bg, rgba(28, 29, 28, 0.85));
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--menubar-text, #f5f5f5);
+  z-index: 10000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+
+.menu-bar-left,
+.menu-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.menu-item {
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: default;
+  transition: background 0.1s ease;
+  position: relative;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.apple-menu {
+  cursor: pointer;
+}
+
+.apple-logo {
+  font-size: 14px;
+}
+
+.app-name {
+  font-weight: 600;
+}
+
+.status-icon {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+.datetime {
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--dropdown-bg, #252625);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  padding: 6px 0;
+  margin-top: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10001;
+}
+
+.dropdown-header {
+  padding: 8px 14px;
+  font-weight: 600;
+  color: var(--text-primary, #f5f5f5);
+}
+
+.dropdown-section {
+  padding: 6px 14px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted, rgba(255, 255, 255, 0.4));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-primary, #f5f5f5);
+  text-decoration: none;
+  transition: background 0.1s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dropdown-item.active {
+  background: var(--accent-color, #8B9A7D);
+  color: #fff;
+}
+
+.dropdown-item.active:hover {
+  background: var(--accent-hover, #7a8a6d);
+}
+
+.dropdown-icon {
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
+}
+
+.menu-backdrop {
+  position: fixed;
+  top: 28px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+

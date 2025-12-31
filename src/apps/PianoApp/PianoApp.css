@@ -1,0 +1,203 @@
+.piano-app {
+  height: 100%;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, #0a0a0a 100%);
+  color: var(--text-primary);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+}
+
+.piano-header {
+  text-align: center;
+}
+
+.piano-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.piano-hint {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.piano-controls {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-group label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  min-width: 50px;
+}
+
+.control-group input[type="range"] {
+  width: 100px;
+  accent-color: var(--accent-color);
+}
+
+.control-group span {
+  font-size: 12px;
+  color: var(--text-secondary);
+  min-width: 35px;
+}
+
+.control-group select {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.piano-keyboard {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  min-height: 200px;
+}
+
+.white-keys {
+  display: flex;
+  gap: 2px;
+}
+
+.black-keys {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 55%;
+  pointer-events: none;
+}
+
+.piano-key {
+  cursor: pointer;
+  transition: all 0.05s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+.white-key {
+  width: 58px;
+  height: 100%;
+  background: linear-gradient(180deg, #f8f8f8 0%, #e8e8e8 100%);
+  border: 1px solid #ccc;
+  border-radius: 0 0 8px 8px;
+  justify-content: flex-end;
+  padding-bottom: 15px;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.white-key:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
+}
+
+.white-key.active {
+  background: linear-gradient(180deg, #e0e0e0 0%, #d0d0d0 100%);
+  box-shadow: 
+    0 2px 3px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(2px);
+}
+
+.white-key .key-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.white-key .note-label {
+  font-size: 11px;
+  color: #999;
+}
+
+.black-key {
+  position: absolute;
+  width: 36px;
+  height: 100%;
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 0 0 6px 6px;
+  z-index: 10;
+  pointer-events: auto;
+  justify-content: flex-end;
+  padding-bottom: 12px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.3);
+}
+
+.black-key:hover {
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+}
+
+.black-key.active {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(2px);
+  height: calc(100% - 2px);
+}
+
+.black-key .key-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+}
+
+.keyboard-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.guide-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guide-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  min-width: 80px;
+}
+
+.guide-keys {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+}
+
