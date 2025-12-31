@@ -22,7 +22,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    const timers: NodeJS.Timeout[] = [];
+    const timers: ReturnType<typeof setTimeout>[] = [];
 
     BOOT_MESSAGES.forEach((_, index) => {
       const timer = setTimeout(() => {

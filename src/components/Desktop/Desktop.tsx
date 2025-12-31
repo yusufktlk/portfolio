@@ -126,8 +126,8 @@ export function Desktop({ icons: initialIcons }: DesktopProps) {
     {
       id: 'theme-forest',
       label: 'Forest Theme',
-      icon: theme === 'forest' ? '✓' : ' ',
-      onClick: () => setTheme('forest'),
+      icon: theme === 'green' ? '✓' : ' ',
+      onClick: () => setTheme('green'),
     },
     { id: 'divider3', label: '', divider: true },
     {
