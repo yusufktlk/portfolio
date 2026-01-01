@@ -7,6 +7,7 @@ import { Dock } from './components/Dock';
 import { WindowManager } from './components/WindowManager';
 import { MenuBar } from './components/MenuBar';
 import { BootScreen } from './components/BootScreen';
+import { Spotlight } from './components/Spotlight';
 import { NotesApp } from './apps/NotesApp';
 import { BrowserApp } from './apps/BrowserApp';
 import { TerminalApp } from './apps/TerminalApp';
@@ -19,11 +20,13 @@ import { PaintApp } from './apps/PaintApp';
 import { PianoApp } from './apps/PianoApp';
 import { PomodoroApp } from './apps/PomodoroApp';
 import { GTA6App } from './apps/GTA6App';
+import { TicTacToe } from './apps/TicTacToe';
 import type { DesktopIcon, DockItem } from './types';
 import './App.css';
 
 function DesktopEnvironment() {
-  const { openWindow, windows, restoreWindow } = useWindows();
+  const { openWindow, windows, restoreWindow, closeWindow, minimizeWindow, activeWindowId } = useWindows();
+  const [spotlightOpen, setSpotlightOpen] = useState(false);
 
   const openNotes = useCallback(() => {
     openWindow({
@@ -193,6 +196,45 @@ function DesktopEnvironment() {
     });
   }, [openWindow]);
 
+  const openTicTacToe = useCallback(() => {
+    openWindow({
+      id: 'tictactoe',
+      title: 'Tic Tac Toe',
+      icon: '⭕',
+      position: { x: 300, y: 20 },
+      size: { width: 800, height: 600 },
+      minSize: { width: 350, height: 500 },
+      isMinimized: false,
+      isMaximized: false,
+      component: TicTacToe,
+    });
+  }, [openWindow]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSpotlightOpen(prev => !prev);
+      }
+      
+      if (e.key === 'Escape') {
+        if (spotlightOpen) {
+          setSpotlightOpen(false);
+        } else if (activeWindowId) {
+          closeWindow(activeWindowId);
+        }
+      }
+      
+      if ((e.metaKey || e.ctrlKey) && e.key === 'm' && activeWindowId) {
+        e.preventDefault();
+        minimizeWindow(activeWindowId);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [spotlightOpen, activeWindowId, closeWindow, minimizeWindow]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       openBrowser();
@@ -297,7 +339,15 @@ function DesktopEnvironment() {
       position: { x: 424, y: 24 },
       onOpen: openGTA6,
     },
-  ], [openNotes, openBrowser, openTerminal, openSettings, openSnakeGame, openMusicPlayer, openCalculator, openCalendar, openPaint, openPiano, openPomodoro, openGTA6]);
+    {
+      id: 'tictactoe',
+      title: 'Tic Tac Toe',
+      icon: '⭕',
+      type: 'app',
+      position: { x: 424, y: 124 },
+      onOpen: openTicTacToe,
+    },
+  ], [openNotes, openBrowser, openTerminal, openSettings, openSnakeGame, openMusicPlayer, openCalculator, openCalendar, openPaint, openPiano, openPomodoro, openGTA6, openTicTacToe]);
 
   const dockItems: DockItem[] = useMemo(() => [
     {
@@ -410,7 +460,27 @@ function DesktopEnvironment() {
         else openPomodoro();
       },
     },
-  ], [windows, openBrowser, openNotes, openTerminal, openSettings, openMusicPlayer, openCalculator, openCalendar, openPaint, openPiano, openPomodoro, restoreWindow]);
+    {
+      id: 'tictactoe',
+      title: 'Tic Tac Toe',
+      icon: '⭕',
+      isOpen: windows.some(w => w.id === 'tictactoe'),
+      onClick: () => {
+        const win = windows.find(w => w.id === 'tictactoe');
+        if (win?.isMinimized) restoreWindow('tictactoe');
+        else openTicTacToe();
+      },
+    },
+  ], [windows, openBrowser, openNotes, openTerminal, openSettings, openMusicPlayer, openCalculator, openCalendar, openPaint, openPiano, openPomodoro, openTicTacToe, restoreWindow]);
+
+  const spotlightApps = useMemo(() => 
+    desktopIcons.map(icon => ({
+      id: icon.id,
+      title: icon.title,
+      icon: icon.icon,
+      onOpen: icon.onOpen,
+    })),
+  [desktopIcons]);
 
   return (
     <>
@@ -418,6 +488,11 @@ function DesktopEnvironment() {
       <Desktop icons={desktopIcons} />
       <WindowManager />
       <Dock items={dockItems} />
+      <Spotlight 
+        isOpen={spotlightOpen} 
+        onClose={() => setSpotlightOpen(false)} 
+        apps={spotlightApps}
+      />
     </>
   );
 }

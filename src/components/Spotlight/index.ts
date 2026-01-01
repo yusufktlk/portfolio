@@ -1,0 +1,2 @@
+export { Spotlight } from './Spotlight';
+

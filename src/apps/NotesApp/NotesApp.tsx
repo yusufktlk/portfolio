@@ -23,7 +23,13 @@ export function NotesApp({ windowId: _windowId }: NotesAppProps) {
           <p>🎨 Paint - Draw something</p>
           <p>🎹 Piano - Play some music</p>
           <p>⏱️ Pomodoro - Focus timer</p>
+          <p>⭕ Tic Tac Toe - Classic game</p>
           <p>⚙️ Settings - Customize wallpaper & theme</p>
+          <br />
+          <p><strong>Keyboard Shortcuts:</strong></p>
+          <p>• Ctrl/Cmd + K - Open Spotlight Search</p>
+          <p>• Ctrl/Cmd + M - Minimize window</p>
+          <p>• Esc - Close window</p>
           <br />
           <p><strong>Tips:</strong></p>
           <p>• Right-click on desktop for context menu</p>
