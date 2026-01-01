@@ -8,7 +8,6 @@
   align-items: center;
   gap: 20px;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: hidden;
 }
 
 .pomodoro-header {
@@ -66,8 +65,8 @@
 }
 
 .timer-ring {
-  width: 280px;
-  height: 280px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   background: conic-gradient(
     var(--mode-color) var(--progress),
@@ -98,14 +97,14 @@
 }
 
 .timer-mode {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .timer-display {
-  font-size: 64px;
+  font-size: 34px;
   font-weight: 200;
   font-family: 'SF Mono', 'Fira Code', monospace;
   letter-spacing: 4px;

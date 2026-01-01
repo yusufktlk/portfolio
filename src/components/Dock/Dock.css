@@ -10,7 +10,7 @@
   display: flex;
   align-items: flex-end;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 8px 12px 12px 12px;
   background: var(--menubar-bg, rgba(28, 29, 28, 0.75));
   backdrop-filter: blur(20px);
   border-radius: 18px;
@@ -19,8 +19,7 @@
     0 10px 40px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
   max-width: calc(100vw - 20px);
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: visible;
 }
 
 .dock::-webkit-scrollbar {

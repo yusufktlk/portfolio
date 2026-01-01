@@ -75,7 +75,7 @@ function DesktopEnvironment() {
       id: 'settings',
       title: 'Settings',
       icon: '⚙️',
-      position: { x: 220, y: 70 },
+      position: { x: 220, y: 30 },
       size: { width: 800, height: 550 },
       minSize: { width: 500, height: 350 },
       isMinimized: false,
@@ -103,7 +103,7 @@ function DesktopEnvironment() {
       id: 'music',
       title: 'Music',
       icon: '🎵',
-      position: { x: 300, y: 60 },
+      position: { x: 1105, y: 30 },
       size: { width: 420, height: 650 },
       minSize: { width: 350, height: 500 },
       isMinimized: false,
@@ -131,7 +131,7 @@ function DesktopEnvironment() {
       id: 'calendar',
       title: 'Calendar',
       icon: '📅',
-      position: { x: 200, y: 70 },
+      position: { x: 100, y: 30 },
       size: { width: 420, height: 650 },
       minSize: { width: 380, height: 520 },
       isMinimized: false,
@@ -145,8 +145,8 @@ function DesktopEnvironment() {
       id: 'paint',
       title: 'Paint',
       icon: '🎨',
-      position: { x: 150, y: 50 },
-      size: { width: 900, height: 650 },
+      position: { x: 150, y: 20 },
+      size: { width: 900, height: 580 },
       minSize: { width: 600, height: 450 },
       isMinimized: false,
       isMaximized: false,
@@ -159,8 +159,8 @@ function DesktopEnvironment() {
       id: 'piano',
       title: 'Piano',
       icon: '🎹',
-      position: { x: 180, y: 60 },
-      size: { width: 750, height: 450 },
+      position: { x: 180, y: 30 },
+      size: { width: 750, height: 550 },
       minSize: { width: 650, height: 380 },
       isMinimized: false,
       isMaximized: false,
@@ -173,8 +173,8 @@ function DesktopEnvironment() {
       id: 'pomodoro',
       title: 'Pomodoro',
       icon: '⏱️',
-      position: { x: 250, y: 80 },
-      size: { width: 400, height: 580 },
+      position: { x: 250, y: 10 },
+      size: { width: 400, height: 600 },
       minSize: { width: 350, height: 500 },
       isMinimized: false,
       isMaximized: false,
@@ -201,7 +201,7 @@ function DesktopEnvironment() {
       id: 'tictactoe',
       title: 'Tic Tac Toe',
       icon: '⭕',
-      position: { x: 300, y: 20 },
+      position: { x: 300, y: 10 },
       size: { width: 800, height: 600 },
       minSize: { width: 350, height: 500 },
       isMinimized: false,
@@ -349,129 +349,96 @@ function DesktopEnvironment() {
     },
   ], [openNotes, openBrowser, openTerminal, openSettings, openSnakeGame, openMusicPlayer, openCalculator, openCalendar, openPaint, openPiano, openPomodoro, openGTA6, openTicTacToe]);
 
+  const handleDockClick = useCallback((id: string, openFn: () => void) => {
+    const win = windows.find(w => w.id === id);
+    if (win?.isMinimized) {
+      restoreWindow(id);
+    } else if (win && activeWindowId === id) {
+      minimizeWindow(id);
+    } else {
+      openFn();
+    }
+  }, [windows, activeWindowId, restoreWindow, minimizeWindow]);
+
   const dockItems: DockItem[] = useMemo(() => [
     {
       id: 'browser',
       title: 'Browser',
       icon: '🌐',
       isOpen: windows.some(w => w.id === 'browser'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'browser');
-        if (win?.isMinimized) restoreWindow('browser');
-        else openBrowser();
-      },
+      onClick: () => handleDockClick('browser', openBrowser),
     },
     {
       id: 'terminal',
       title: 'Terminal',
       icon: '>_',
       isOpen: windows.some(w => w.id === 'terminal'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'terminal');
-        if (win?.isMinimized) restoreWindow('terminal');
-        else openTerminal();
-      },
+      onClick: () => handleDockClick('terminal', openTerminal),
     },
     {
       id: 'music',
       title: 'Music',
       icon: '🎵',
       isOpen: windows.some(w => w.id === 'music'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'music');
-        if (win?.isMinimized) restoreWindow('music');
-        else openMusicPlayer();
-      },
+      onClick: () => handleDockClick('music', openMusicPlayer),
     },
     {
       id: 'calculator',
       title: 'Calculator',
       icon: '🔢',
       isOpen: windows.some(w => w.id === 'calculator'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'calculator');
-        if (win?.isMinimized) restoreWindow('calculator');
-        else openCalculator();
-      },
+      onClick: () => handleDockClick('calculator', openCalculator),
     },
     {
       id: 'notes',
       title: 'Notes',
       icon: '📝',
       isOpen: windows.some(w => w.id === 'notes'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'notes');
-        if (win?.isMinimized) restoreWindow('notes');
-        else openNotes();
-      },
+      onClick: () => handleDockClick('notes', openNotes),
     },
     {
       id: 'settings',
       title: 'Settings',
       icon: '⚙️',
       isOpen: windows.some(w => w.id === 'settings'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'settings');
-        if (win?.isMinimized) restoreWindow('settings');
-        else openSettings();
-      },
+      onClick: () => handleDockClick('settings', openSettings),
     },
     {
       id: 'calendar',
       title: 'Calendar',
       icon: '📅',
       isOpen: windows.some(w => w.id === 'calendar'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'calendar');
-        if (win?.isMinimized) restoreWindow('calendar');
-        else openCalendar();
-      },
+      onClick: () => handleDockClick('calendar', openCalendar),
     },
     {
       id: 'paint',
       title: 'Paint',
       icon: '🎨',
       isOpen: windows.some(w => w.id === 'paint'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'paint');
-        if (win?.isMinimized) restoreWindow('paint');
-        else openPaint();
-      },
+      onClick: () => handleDockClick('paint', openPaint),
     },
     {
       id: 'piano',
       title: 'Piano',
       icon: '🎹',
       isOpen: windows.some(w => w.id === 'piano'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'piano');
-        if (win?.isMinimized) restoreWindow('piano');
-        else openPiano();
-      },
+      onClick: () => handleDockClick('piano', openPiano),
     },
     {
       id: 'pomodoro',
       title: 'Pomodoro',
       icon: '⏱️',
       isOpen: windows.some(w => w.id === 'pomodoro'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'pomodoro');
-        if (win?.isMinimized) restoreWindow('pomodoro');
-        else openPomodoro();
-      },
+      onClick: () => handleDockClick('pomodoro', openPomodoro),
     },
     {
       id: 'tictactoe',
       title: 'Tic Tac Toe',
       icon: '⭕',
       isOpen: windows.some(w => w.id === 'tictactoe'),
-      onClick: () => {
-        const win = windows.find(w => w.id === 'tictactoe');
-        if (win?.isMinimized) restoreWindow('tictactoe');
-        else openTicTacToe();
-      },
+      onClick: () => handleDockClick('tictactoe', openTicTacToe),
     },
-  ], [windows, openBrowser, openNotes, openTerminal, openSettings, openMusicPlayer, openCalculator, openCalendar, openPaint, openPiano, openPomodoro, openTicTacToe, restoreWindow]);
+  ], [windows, handleDockClick, openBrowser, openNotes, openTerminal, openSettings, openMusicPlayer, openCalculator, openCalendar, openPaint, openPiano, openPomodoro, openTicTacToe]);
 
   const spotlightApps = useMemo(() => 
     desktopIcons.map(icon => ({

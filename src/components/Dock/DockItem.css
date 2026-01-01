@@ -5,10 +5,12 @@
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding-bottom: 10px;
 }
 
 .dock-item:hover {
   transform: translateY(-8px) scale(1.2);
+  z-index: 10;
 }
 
 .dock-item:active {
@@ -70,11 +72,14 @@
 }
 
 .dock-item-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 5px;
   height: 5px;
   background: var(--accent-color, #8B9A7D);
   border-radius: 50%;
-  margin-top: 4px;
   box-shadow: 0 0 8px rgba(139, 154, 125, 0.5);
 }
 
@@ -93,7 +98,6 @@
   .dock-item-indicator {
     width: 4px;
     height: 4px;
-    margin-top: 3px;
   }
 
   .dock-item-tooltip {
@@ -116,6 +120,5 @@
   .dock-item-indicator {
     width: 3px;
     height: 3px;
-    margin-top: 2px;
   }
 }

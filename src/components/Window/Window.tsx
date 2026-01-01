@@ -16,7 +16,9 @@ export function Window({ window: windowState }: WindowProps) {
     focusWindow, 
     moveWindow, 
     resizeWindow,
-    activeWindowId 
+    activeWindowId,
+    minimizingWindowId,
+    closingWindowId
   } = useWindows();
   
   const windowRef = useRef<HTMLDivElement>(null);
@@ -24,25 +26,10 @@ export function Window({ window: windowState }: WindowProps) {
   const [isResizing, setIsResizing] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
-  const [isClosing, setIsClosing] = useState(false);
-  const [isMinimizing, setIsMinimizing] = useState(false);
 
   const isActive = activeWindowId === windowState.id;
-
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => {
-      closeWindow(windowState.id);
-    }, 200);
-  }, [closeWindow, windowState.id]);
-
-  const handleMinimize = useCallback(() => {
-    setIsMinimizing(true);
-    setTimeout(() => {
-      minimizeWindow(windowState.id);
-      setIsMinimizing(false);
-    }, 300);
-  }, [minimizeWindow, windowState.id]);
+  const isClosing = closingWindowId === windowState.id;
+  const isMinimizing = minimizingWindowId === windowState.id;
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('.window-controls')) return;
@@ -151,12 +138,12 @@ export function Window({ window: windowState }: WindowProps) {
         <div className="window-controls">
           <button 
             className="window-control close" 
-            onClick={handleClose}
+            onClick={() => closeWindow(windowState.id)}
             title="Close"
           />
           <button 
             className="window-control minimize" 
-            onClick={handleMinimize}
+            onClick={() => minimizeWindow(windowState.id)}
             title="Minimize"
           />
           <button 

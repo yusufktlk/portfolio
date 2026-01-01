@@ -5,6 +5,8 @@ import type { WindowState, Position, Size } from '../types';
 interface WindowContextType {
   windows: WindowState[];
   activeWindowId: string | null;
+  minimizingWindowId: string | null;
+  closingWindowId: string | null;
   openWindow: (window: Omit<WindowState, 'zIndex'>) => void;
   closeWindow: (id: string) => void;
   minimizeWindow: (id: string) => void;
@@ -20,6 +22,8 @@ const WindowContext = createContext<WindowContextType | null>(null);
 export function WindowProvider({ children }: { children: ReactNode }) {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
+  const [minimizingWindowId, setMinimizingWindowId] = useState<string | null>(null);
+  const [closingWindowId, setClosingWindowId] = useState<string | null>(null);
   const [topZIndex, setTopZIndex] = useState(100);
 
   const openWindow = useCallback((window: Omit<WindowState, 'zIndex'>) => {
@@ -39,15 +43,23 @@ export function WindowProvider({ children }: { children: ReactNode }) {
   }, [topZIndex]);
 
   const closeWindow = useCallback((id: string) => {
-    setWindows(prev => prev.filter(w => w.id !== id));
+    setClosingWindowId(id);
     setActiveWindowId(prev => prev === id ? null : prev);
+    setTimeout(() => {
+      setWindows(prev => prev.filter(w => w.id !== id));
+      setClosingWindowId(null);
+    }, 200);
   }, []);
 
   const minimizeWindow = useCallback((id: string) => {
-    setWindows(prev => prev.map(w => 
-      w.id === id ? { ...w, isMinimized: true } : w
-    ));
+    setMinimizingWindowId(id);
     setActiveWindowId(prev => prev === id ? null : prev);
+    setTimeout(() => {
+      setWindows(prev => prev.map(w => 
+        w.id === id ? { ...w, isMinimized: true } : w
+      ));
+      setMinimizingWindowId(null);
+    }, 300);
   }, []);
 
   const maximizeWindow = useCallback((id: string) => {
@@ -88,6 +100,8 @@ export function WindowProvider({ children }: { children: ReactNode }) {
     <WindowContext.Provider value={{
       windows,
       activeWindowId,
+      minimizingWindowId,
+      closingWindowId,
       openWindow,
       closeWindow,
       minimizeWindow,
