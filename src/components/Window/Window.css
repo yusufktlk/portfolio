@@ -9,6 +9,49 @@
   flex-direction: column;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
+  animation: windowOpen 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center center;
+}
+
+@keyframes windowOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.window.closing {
+  animation: windowClose 0.2s ease-out forwards;
+}
+
+@keyframes windowClose {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.window.minimizing {
+  animation: windowMinimize 0.3s ease-in forwards;
+}
+
+@keyframes windowMinimize {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translateY(100vh);
+  }
 }
 
 .window.active {
@@ -19,6 +62,16 @@
 
 .window.maximized {
   border-radius: 0;
+  animation: windowMaximize 0.2s ease-out;
+}
+
+@keyframes windowMaximize {
+  0% {
+    border-radius: 12px;
+  }
+  100% {
+    border-radius: 0;
+  }
 }
 
 .window-titlebar {

@@ -24,8 +24,25 @@ export function Window({ window: windowState }: WindowProps) {
   const [isResizing, setIsResizing] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
+  const [isClosing, setIsClosing] = useState(false);
+  const [isMinimizing, setIsMinimizing] = useState(false);
 
   const isActive = activeWindowId === windowState.id;
+
+  const handleClose = useCallback(() => {
+    setIsClosing(true);
+    setTimeout(() => {
+      closeWindow(windowState.id);
+    }, 200);
+  }, [closeWindow, windowState.id]);
+
+  const handleMinimize = useCallback(() => {
+    setIsMinimizing(true);
+    setTimeout(() => {
+      minimizeWindow(windowState.id);
+      setIsMinimizing(false);
+    }, 300);
+  }, [minimizeWindow, windowState.id]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('.window-controls')) return;
@@ -111,10 +128,18 @@ export function Window({ window: windowState }: WindowProps) {
         zIndex: windowState.zIndex,
       };
 
+  const windowClassName = [
+    'window',
+    isActive ? 'active' : '',
+    windowState.isMaximized ? 'maximized' : '',
+    isClosing ? 'closing' : '',
+    isMinimizing ? 'minimizing' : '',
+  ].filter(Boolean).join(' ');
+
   return (
     <div
       ref={windowRef}
-      className={`window ${isActive ? 'active' : ''} ${windowState.isMaximized ? 'maximized' : ''}`}
+      className={windowClassName}
       style={style}
       onMouseDown={() => focusWindow(windowState.id)}
     >
@@ -126,12 +151,12 @@ export function Window({ window: windowState }: WindowProps) {
         <div className="window-controls">
           <button 
             className="window-control close" 
-            onClick={() => closeWindow(windowState.id)}
+            onClick={handleClose}
             title="Close"
           />
           <button 
             className="window-control minimize" 
-            onClick={() => minimizeWindow(windowState.id)}
+            onClick={handleMinimize}
             title="Minimize"
           />
           <button 
