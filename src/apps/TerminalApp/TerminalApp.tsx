@@ -25,6 +25,7 @@ const COMMANDS: Record<string, () => string[]> = {
     '  clear       - Clear terminal',
     '  date        - Show current date',
     '  echo <msg>  - Echo a message',
+    '  matrix      - 🐇 Follow the white rabbit...',
     '',
     'Type a command and press Enter.',
   ],
@@ -149,8 +150,10 @@ export function TerminalApp({ windowId: _windowId }: TerminalAppProps) {
   const [input, setInput] = useState('');
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [showMatrix, setShowMatrix] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -161,6 +164,52 @@ export function TerminalApp({ windowId: _windowId }: TerminalAppProps) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [history]);
+
+  useEffect(() => {
+    if (!showMatrix || !canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops: number[] = Array(columns).fill(1);
+    
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    const draw = () => {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#0F0';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    };
+
+    const interval = setInterval(draw, 33);
+
+    const timeout = setTimeout(() => {
+      setShowMatrix(false);
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [showMatrix]);
 
   const executeCommand = useCallback((cmd: string) => {
     const trimmedCmd = cmd.trim().toLowerCase();
@@ -174,6 +223,15 @@ export function TerminalApp({ windowId: _windowId }: TerminalAppProps) {
 
     if (command === 'clear') {
       setHistory([]);
+      return;
+    }
+
+    if (command === 'matrix') {
+      setShowMatrix(true);
+      setHistory(prev => [...prev, {
+        command: cmd,
+        output: ['Entering the Matrix... (Press any key or wait 10s to exit)'],
+      }]);
       return;
     }
 
@@ -241,6 +299,13 @@ export function TerminalApp({ windowId: _windowId }: TerminalAppProps) {
 
   return (
     <div className="terminal-app" onClick={handleTerminalClick}>
+      {showMatrix && (
+        <canvas 
+          ref={canvasRef} 
+          className="matrix-canvas"
+          onClick={() => setShowMatrix(false)}
+        />
+      )}
       <div className="terminal-output" ref={terminalRef}>
         <div className="terminal-welcome">
           {WELCOME_MESSAGE.map((line, i) => (
