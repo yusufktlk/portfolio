@@ -150,3 +150,61 @@
   border-radius: 3px;
 }
 
+@media (max-width: 768px) {
+  .spotlight-overlay {
+    padding-top: 10vh;
+  }
+
+  .spotlight-container {
+    max-width: calc(100vw - 24px);
+    height: auto;
+    max-height: 70vh;
+  }
+
+  .spotlight-search {
+    padding: 14px 16px;
+  }
+
+  .spotlight-input {
+    font-size: 16px;
+  }
+
+  .spotlight-shortcut {
+    display: none;
+  }
+
+  .spotlight-results {
+    max-height: 50vh;
+  }
+
+  .spotlight-result {
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spotlight-container {
+    max-width: calc(100vw - 16px);
+    border-radius: 12px;
+  }
+
+  .spotlight-search {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .spotlight-icon {
+    font-size: 18px;
+  }
+
+  .spotlight-result-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .spotlight-result-title {
+    font-size: 13px;
+  }
+}
+

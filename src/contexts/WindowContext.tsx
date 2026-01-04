@@ -27,16 +27,17 @@ export function WindowProvider({ children }: { children: ReactNode }) {
   const [topZIndex, setTopZIndex] = useState(100);
 
   const openWindow = useCallback((window: Omit<WindowState, 'zIndex'>) => {
+    const isMobile = globalThis.innerWidth <= 768;
     setWindows(prev => {
       const existing = prev.find(w => w.id === window.id);
       if (existing) {
         return prev.map(w => 
           w.id === window.id 
-            ? { ...w, isMinimized: false, zIndex: topZIndex + 1 }
+            ? { ...w, isMinimized: false, isMaximized: isMobile ? true : w.isMaximized, zIndex: topZIndex + 1 }
             : w
         );
       }
-      return [...prev, { ...window, zIndex: topZIndex + 1 }];
+      return [...prev, { ...window, isMaximized: isMobile ? true : window.isMaximized, zIndex: topZIndex + 1 }];
     });
     setTopZIndex(prev => prev + 1);
     setActiveWindowId(window.id);

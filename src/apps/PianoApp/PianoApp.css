@@ -70,7 +70,6 @@
 }
 
 .piano-keyboard {
-  position: relative;
   display: flex;
   justify-content: center;
   flex: 1;
@@ -78,6 +77,7 @@
 }
 
 .white-keys {
+  position: relative;
   display: flex;
   gap: 2px;
 }
@@ -85,9 +85,8 @@
 .black-keys {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
+  left: 0;
+  right: 0;
   height: 55%;
   pointer-events: none;
 }
@@ -199,5 +198,88 @@
   font-size: 13px;
   color: var(--text-primary);
   letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .piano-app {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .piano-header h2 {
+    font-size: 20px;
+  }
+
+  .piano-controls {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .control-group input[type="range"] {
+    width: 80px;
+  }
+
+  .white-key {
+    width: 44px;
+  }
+
+  .black-key {
+    width: 28px;
+  }
+
+  .keyboard-guide {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .piano-app {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .piano-header h2 {
+    font-size: 18px;
+  }
+
+  .piano-hint {
+    font-size: 12px;
+  }
+
+  .piano-controls {
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .control-group label {
+    font-size: 12px;
+    min-width: 40px;
+  }
+
+  .control-group input[type="range"] {
+    width: 60px;
+  }
+
+  .white-key {
+    width: 36px;
+    padding-bottom: 10px;
+  }
+
+  .white-key .key-label {
+    font-size: 12px;
+  }
+
+  .white-key .note-label {
+    font-size: 10px;
+  }
+
+  .black-key {
+    width: 24px;
+  }
+
+  .black-key .key-label {
+    font-size: 10px;
+  }
 }
 

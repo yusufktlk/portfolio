@@ -170,3 +170,47 @@
 .snake-controls button:active {
   transform: scale(0.95);
 }
+
+@media (max-width: 768px) {
+  .snake-game {
+    padding: 12px;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  .snake-header {
+    max-width: 100%;
+  }
+
+  .snake-board-container {
+    max-width: 100%;
+  }
+
+  .snake-controls {
+    margin-top: 20px;
+  }
+
+  .snake-controls button {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .snake-emoji {
+    font-size: 48px;
+  }
+
+  .snake-start-screen h2,
+  .snake-game-over h2,
+  .snake-paused h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .snake-controls button {
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+  }
+}

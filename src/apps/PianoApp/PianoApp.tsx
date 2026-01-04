@@ -184,20 +184,20 @@ export default function PianoApp() {
               <span className="note-label">{key.note}</span>
             </div>
           ))}
-        </div>
-        <div className="black-keys">
-          {blackKeys.map((key) => (
-            <div
-              key={key.note}
-              className={`piano-key black-key ${activeKeys.has(key.note) ? 'active' : ''}`}
-              style={{ left: `${getBlackKeyPosition(key.note)}px` }}
-              onMouseDown={() => playNote(key)}
-              onMouseUp={() => stopNote(key)}
-              onMouseLeave={() => stopNote(key)}
-            >
-              <span className="key-label">{key.key.toUpperCase()}</span>
-            </div>
-          ))}
+          <div className="black-keys">
+            {blackKeys.map((key) => (
+              <div
+                key={key.note}
+                className={`piano-key black-key ${activeKeys.has(key.note) ? 'active' : ''}`}
+                style={{ left: `${getBlackKeyPosition(key.note)}px` }}
+                onMouseDown={() => playNote(key)}
+                onMouseUp={() => stopNote(key)}
+                onMouseLeave={() => stopNote(key)}
+              >
+                <span className="key-label">{key.key.toUpperCase()}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

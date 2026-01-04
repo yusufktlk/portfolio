@@ -93,3 +93,32 @@
   justify-content: flex-start;
   padding-left: 28px;
 }
+
+@media (max-width: 768px) {
+  .calc-display {
+    min-height: 100px;
+    padding: 20px;
+  }
+
+  .calc-display-value {
+    font-size: 56px;
+  }
+
+  .calc-btn {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calc-display-value {
+    font-size: 48px;
+  }
+
+  .calc-btn {
+    font-size: 24px;
+  }
+
+  .calc-btn.zero {
+    padding-left: 20px;
+  }
+}

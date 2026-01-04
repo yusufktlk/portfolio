@@ -166,3 +166,56 @@
   color: var(--text-primary);
 }
 
+@media (max-width: 768px) {
+  .calendar-app {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .month {
+    font-size: 20px;
+  }
+
+  .calendar-grid {
+    padding: 12px;
+  }
+
+  .weekday {
+    font-size: 11px;
+    padding: 6px 0;
+  }
+
+  .calendar-day {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-app {
+    padding: 12px;
+  }
+
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .month {
+    font-size: 18px;
+  }
+
+  .year {
+    font-size: 12px;
+  }
+
+  .today-btn {
+    padding: 6px 18px;
+    font-size: 13px;
+  }
+
+  .calendar-day {
+    font-size: 12px;
+    border-radius: 6px;
+  }
+}
+

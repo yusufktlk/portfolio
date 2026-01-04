@@ -301,3 +301,82 @@
   border-radius: 4px;
 }
 
+@media (max-width: 768px) {
+  .settings-app {
+    flex-direction: column;
+  }
+
+  .settings-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  }
+
+  .settings-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 8px;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+
+  .settings-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .settings-nav-item {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .nav-icon {
+    font-size: 14px;
+  }
+
+  .settings-content {
+    padding: 16px;
+  }
+
+  .settings-section h2 {
+    font-size: 18px;
+  }
+
+  .wallpaper-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .about-card {
+    padding: 24px 16px;
+  }
+
+  .about-logo {
+    font-size: 48px;
+  }
+
+  .about-links {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-sidebar-header {
+    display: none;
+  }
+
+  .wallpaper-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .theme-item {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .theme-icon {
+    font-size: 24px;
+  }
+}
+

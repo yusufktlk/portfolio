@@ -177,3 +177,94 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+@media (max-width: 768px) {
+  .tictactoe-app {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .tictactoe-header h2 {
+    font-size: 22px;
+  }
+
+  .tictactoe-scores {
+    gap: 16px;
+  }
+
+  .score-item {
+    padding: 10px 18px;
+    min-width: 60px;
+  }
+
+  .score-value {
+    font-size: 24px;
+  }
+
+  .tictactoe-cell {
+    width: 80px;
+    height: 80px;
+    font-size: 42px;
+  }
+
+  .tictactoe-btn {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tictactoe-app {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .tictactoe-header h2 {
+    font-size: 20px;
+  }
+
+  .tictactoe-status {
+    font-size: 16px;
+    padding: 6px 16px;
+  }
+
+  .tictactoe-scores {
+    gap: 12px;
+  }
+
+  .score-item {
+    padding: 8px 14px;
+    min-width: 50px;
+  }
+
+  .score-label {
+    font-size: 12px;
+  }
+
+  .score-value {
+    font-size: 20px;
+  }
+
+  .tictactoe-board {
+    gap: 6px;
+    padding: 12px;
+  }
+
+  .tictactoe-cell {
+    width: 70px;
+    height: 70px;
+    font-size: 36px;
+    border-radius: 10px;
+  }
+
+  .tictactoe-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .tictactoe-btn {
+    padding: 8px 18px;
+    font-size: 12px;
+  }
+}
+

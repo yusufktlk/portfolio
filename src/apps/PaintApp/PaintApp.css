@@ -143,20 +143,63 @@
   border: 1px solid var(--border-color);
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .paint-toolbar {
     gap: 8px;
-    padding: 8px;
+    padding: 8px 10px;
+  }
+
+  .tool-btn,
+  .size-btn,
+  .action-btn {
+    width: 40px;
+    height: 40px;
   }
 
   .color-palette {
-    max-width: 150px;
+    max-width: 160px;
   }
 
   .color-btn {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .paint-status {
+    padding: 6px 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .paint-toolbar {
+    gap: 6px;
+    padding: 6px 8px;
+  }
+
+  .tool-btn,
+  .size-btn,
+  .action-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .color-palette {
+    max-width: 120px;
+  }
+
+  .color-btn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .actions {
+    margin-left: 0;
   }
 }
 

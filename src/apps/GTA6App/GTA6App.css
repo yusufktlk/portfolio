@@ -94,3 +94,45 @@
 .gta6-preorder:active {
   transform: translateY(0);
 }
+
+@media (max-width: 768px) {
+  .gta6-overlay {
+    padding: 16px;
+  }
+
+  .gta6-subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .gta6-countdown {
+    padding: 20px 32px;
+  }
+
+  .countdown-number {
+    font-size: 42px;
+  }
+
+  .gta6-preorder {
+    padding: 12px 28px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gta6-subtitle {
+    font-size: 16px;
+  }
+
+  .gta6-countdown {
+    padding: 16px 24px;
+  }
+
+  .gta6-countdown p {
+    font-size: 12px;
+  }
+
+  .countdown-number {
+    font-size: 36px;
+  }
+}

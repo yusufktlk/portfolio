@@ -134,3 +134,50 @@
   z-index: 9999;
 }
 
+@media (max-width: 768px) {
+  .menu-bar {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .menu-item {
+    padding: 4px 6px;
+  }
+
+  .menu-bar-left .menu-item:not(.apple-menu):not(.app-name) {
+    display: none;
+  }
+
+  .datetime {
+    font-size: 11px;
+  }
+
+  .dropdown-menu {
+    min-width: 180px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-bar {
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .apple-logo {
+    font-size: 12px;
+  }
+
+  .app-name {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .status-icon {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+}
+

@@ -336,3 +336,67 @@
 .playlist-items::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+@media (max-width: 768px) {
+  .now-playing {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .album-art {
+    width: 64px;
+    height: 64px;
+  }
+
+  .song-title {
+    font-size: 16px;
+  }
+
+  .song-artist {
+    font-size: 13px;
+  }
+
+  .progress-container {
+    padding: 12px 16px;
+  }
+
+  .player-controls {
+    padding: 10px 16px;
+  }
+
+  .volume-container {
+    padding: 8px 16px 16px;
+  }
+
+  .playlist h3 {
+    padding: 12px 16px 10px;
+  }
+
+  .playlist-items {
+    padding: 0 8px 8px;
+  }
+
+  .playlist-item {
+    padding: 10px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .now-playing {
+    padding: 12px;
+  }
+
+  .album-art {
+    width: 56px;
+    height: 56px;
+  }
+
+  .control-btn.play-btn {
+    padding: 12px;
+  }
+
+  .volume-container {
+    display: none;
+  }
+}

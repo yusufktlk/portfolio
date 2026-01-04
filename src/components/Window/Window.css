@@ -63,6 +63,8 @@
 .window.maximized {
   border-radius: 0;
   animation: windowMaximize 0.2s ease-out;
+  top: 0 !important;
+  height: calc(100% - 90px) !important;
 }
 
 @keyframes windowMaximize {
@@ -215,4 +217,41 @@
   height: 10px;
   border-right: 2px solid var(--text-muted, rgba(255, 255, 255, 0.15));
   border-bottom: 2px solid var(--text-muted, rgba(255, 255, 255, 0.15));
+}
+
+@media (max-width: 768px) {
+  .window {
+    border-radius: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% - 60px) !important;
+  }
+
+  .window-titlebar {
+    height: 44px;
+    padding: 0 8px;
+  }
+
+  .window-controls {
+    gap: 10px;
+    margin-right: 10px;
+  }
+
+  .window-control {
+    width: 16px;
+    height: 16px;
+  }
+
+  .window-title {
+    font-size: 14px;
+  }
+
+  .window-resize-handle {
+    display: none;
+  }
+
+  .window-content {
+    -webkit-overflow-scrolling: touch;
+  }
 }

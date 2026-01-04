@@ -133,3 +133,32 @@
 .terminal-input:focus {
   outline: none;
 }
+
+@media (max-width: 768px) {
+  .terminal-app {
+    font-size: 13px;
+  }
+
+  .terminal-output {
+    padding: 12px;
+  }
+
+  .terminal-prompt-line,
+  .terminal-input-line {
+    flex-wrap: wrap;
+  }
+
+  .terminal-input {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-app {
+    font-size: 12px;
+  }
+
+  .terminal-output {
+    padding: 10px;
+  }
+}

@@ -27,14 +27,33 @@
 }
 
 @media (max-width: 768px) {
+  .dock-container {
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    transform: none;
+    padding: 0 8px;
+    display: flex;
+    justify-content: center;
+  }
+
   .dock {
     gap: 4px;
     padding: 6px 8px;
     border-radius: 14px;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 480px) {
+  .dock-container {
+    bottom: 4px;
+    padding: 0 4px;
+  }
+
   .dock {
     gap: 3px;
     padding: 5px 6px;
